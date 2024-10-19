@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Forum Topics</h2>
+
+<ul class="topic-list">
+    {% for topic in topics %}
+        <li>
+            <a href="{% url 'topic_detail' topic.id %}">
+                {{ topic.title }}
+            </a>
+            <p>Created by {{ topic.created_by }} on {{ topic.created_at }}</p>
+        </li>
+    {% empty %}
+        <li>No topics yet. Be the first to <a href="{% url 'create_topic' %}">create a topic</a>.</li>
+    {% endfor %}
+</ul>
+{% endblock %}
